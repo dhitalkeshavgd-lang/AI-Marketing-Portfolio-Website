@@ -6,7 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Field, Input, SelectField, Textarea } from "@/components/ui/fields";
 import { submitContactForm } from "@/actions/contact";
-import { contactInfo, services } from "@/data/site";
+import { services } from "@/data/site";
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
 
 const budgets = [
@@ -33,46 +33,6 @@ export function ContactForm() {
     const result = await submitContactForm(values);
     if (!result.ok) {
       setError("root", { message: result.message });
-      return;
-    }
-
-    try {
-      const formSubmitResponse = await fetch(
-        `https://formsubmit.co/ajax/${contactInfo.email}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: values.name,
-            email: values.email,
-            phone: values.phone,
-            company: values.company ?? "Not provided",
-            service: values.service,
-            budget: values.budget,
-            message: values.message,
-            _replyto: values.email,
-            _subject: `New consultation request from ${values.name}`,
-            _template: "table",
-            _captcha: "false",
-          }),
-        },
-      );
-
-      if (!formSubmitResponse.ok) {
-        setError("root", {
-          message:
-            "Your message was saved, but the email service could not send it. Please try again or email directly.",
-        });
-        return;
-      }
-    } catch {
-      setError("root", {
-        message:
-          "Your message was saved, but the email service could not be reached. Please try again or email directly.",
-      });
       return;
     }
 
