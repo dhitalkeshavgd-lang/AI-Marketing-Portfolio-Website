@@ -38,7 +38,7 @@ async function sendNotification(payload: ContactPayload) {
       },
       body: JSON.stringify({
         from: process.env.RESEND_FROM_EMAIL ?? "Altter Keshav <onboarding@resend.dev>",
-        to: [CONTACT_TO_EMAIL ?? "altterkeshav@gmail.com"],
+        to: [CONTACT_TO_EMAIL ?? "info@altterkeshav.com"],
         subject: `New consultation request from ${payload.name}`,
         text: `${payload.name}\n${payload.email}\n${payload.phone}\n${payload.company ?? ""}\n${payload.service}\n${payload.budget}\n\n${payload.message}`,
       }),
@@ -59,7 +59,7 @@ async function sendNotification(payload: ContactPayload) {
 
   await transporter.sendMail({
     from: process.env.SMTP_FROM_EMAIL ?? SMTP_USER,
-    to: CONTACT_TO_EMAIL ?? "altterkeshav@gmail.com",
+    to: CONTACT_TO_EMAIL ?? "info@altterkeshav.com",
     replyTo: payload.email,
     subject: `New consultation request from ${payload.name}`,
     text: `${payload.name}\n${payload.email}\n${payload.phone}\n${payload.company ?? ""}\n${payload.service}\n${payload.budget}\n\n${payload.message}`,

@@ -30,14 +30,14 @@ Create `.env.local` for production email delivery:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://altterkeshav.com
-CONTACT_TO_EMAIL=altterkeshav@gmail.com
+CONTACT_TO_EMAIL=info@altterkeshav.com
 
 # SMTP via Nodemailer
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your-user
 SMTP_PASS=your-password
-SMTP_FROM_EMAIL=Altter Keshav <altterkeshav@gmail.com>
+SMTP_FROM_EMAIL=Altter Keshav <info@altterkeshav.com>
 
 # Optional Resend alternative
 RESEND_API_KEY=your-resend-key

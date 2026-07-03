@@ -9,7 +9,12 @@ import { submitContactForm } from "@/actions/contact";
 import { contactInfo, services } from "@/data/site";
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
 
-const budgets = ["Under $1,000", "$1,000 - $3,000", "$3,000 - $7,500", "$7,500+"];
+const budgets = [
+  "Under Rs. 1,00,000",
+  "Rs. 1,00,000 - Rs. 3,00,000",
+  "Rs. 3,00,000 - Rs. 7,50,000",
+  "Rs. 7,50,000+",
+];
 
 export function ContactForm() {
   const {
@@ -31,34 +36,42 @@ export function ContactForm() {
       return;
     }
 
-    const formSubmitResponse = await fetch(
-      `https://formsubmit.co/ajax/${contactInfo.email}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+    try {
+      const formSubmitResponse = await fetch(
+        `https://formsubmit.co/ajax/${contactInfo.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            company: values.company ?? "Not provided",
+            service: values.service,
+            budget: values.budget,
+            message: values.message,
+            _replyto: values.email,
+            _subject: `New consultation request from ${values.name}`,
+            _template: "table",
+            _captcha: "false",
+          }),
         },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-          company: values.company ?? "Not provided",
-          service: values.service,
-          budget: values.budget,
-          message: values.message,
-          _replyto: values.email,
-          _subject: `New consultation request from ${values.name}`,
-          _template: "table",
-          _captcha: "false",
-        }),
-      },
-    );
+      );
 
-    if (!formSubmitResponse.ok) {
+      if (!formSubmitResponse.ok) {
+        setError("root", {
+          message:
+            "Your message was saved, but the email service could not send it. Please try again or email directly.",
+        });
+        return;
+      }
+    } catch {
       setError("root", {
         message:
-          "Your message was saved, but the email service could not send it. Please try again or email directly.",
+          "Your message was saved, but the email service could not be reached. Please try again or email directly.",
       });
       return;
     }

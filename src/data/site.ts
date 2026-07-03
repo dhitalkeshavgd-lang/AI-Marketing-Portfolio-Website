@@ -3,7 +3,7 @@ import type { BlogPost, CaseStudy, Service } from "@/types";
 export const contactInfo = {
   name: "Altter Keshav",
   title: "AI Marketing Expert & Consultant",
-  email: "altterkeshav@gmail.com",
+  email: "info@altterkeshav.com",
   phone: "9851121734",
   location: "Gyaneshwor-30, Kathmandu",
 };
