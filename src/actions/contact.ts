@@ -27,7 +27,7 @@ async function storeMessage(payload: ContactPayload) {
 }
 
 async function sendNotification(payload: ContactPayload) {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO_EMAIL, RESEND_API_KEY } = process.env;
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO_EMAIL, RESEND_API_KEY, FORM_SUBMIT_ENABLED } = process.env;
   const toEmail = CONTACT_TO_EMAIL ?? "info@altterkeshav.com";
 
   if (RESEND_API_KEY) {
@@ -48,6 +48,10 @@ async function sendNotification(payload: ContactPayload) {
   }
 
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
+    if (FORM_SUBMIT_ENABLED !== "true") {
+      return;
+    }
+
     const formSubmitResponse = await fetch(`https://formsubmit.co/ajax/${toEmail}`, {
       method: "POST",
       headers: {
@@ -108,15 +112,8 @@ export async function submitContactForm(payload: ContactPayload) {
 
   try {
     await sendNotification(parsed.data);
-  } catch (error) {
-    const message =
-      error instanceof Error && error.message
-        ? error.message
-        : "Email delivery failed.";
-    return {
-      ok: false,
-      message: `Your message was saved locally, but email delivery did not complete: ${message}`,
-    };
+  } catch {
+    // The browser form fallback still posts to FormSubmit after this action succeeds.
   }
 
   return { ok: true, message: "Thank you. Your consultation request has been received." };

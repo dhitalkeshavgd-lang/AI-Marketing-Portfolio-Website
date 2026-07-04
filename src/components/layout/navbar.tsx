@@ -45,7 +45,7 @@ export function Navbar() {
               href={item.href}
               className={cn(
                 "rounded-xl px-3 py-2 text-sm font-semibold text-[#6B7280] transition hover:bg-[#F3F4F6] hover:text-[#111827] xl:px-4",
-                pathname === item.href && "bg-[#EAF8FA] text-[#60B0BE]",
+                pathname === item.href && "nav-link-active",
               )}
             >
               {navLabels[item.href] ?? item.label}

@@ -49,6 +49,24 @@ iframe {
   font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
 }
 
+.nav-link-active {
+  background: #eaf8fa !important;
+  color: #60b0be !important;
+}
+
+.nav-link-active:hover {
+  color: #60b0be !important;
+}
+
+html.dark .nav-link-active {
+  background: rgba(96, 176, 190, 0.16) !important;
+  color: #60b0be !important;
+}
+
+html.dark .nav-link-active:hover {
+  color: #60b0be !important;
+}
+
 html.dark body {
   background: #071316;
   color: #f8fafc;

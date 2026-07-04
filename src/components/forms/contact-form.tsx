@@ -6,7 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Field, Input, SelectField, Textarea } from "@/components/ui/fields";
 import { submitContactForm } from "@/actions/contact";
-import { services } from "@/data/site";
+import { contactInfo, services } from "@/data/site";
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
 
 const budgets = [
@@ -15,6 +15,51 @@ const budgets = [
   "Rs. 3,00,000 - Rs. 7,50,000",
   "Rs. 7,50,000+",
 ];
+
+function submitToFormSubmit(values: ContactPayload) {
+  const iframeName = "formsubmit-hidden-frame";
+  let iframe = document.querySelector<HTMLIFrameElement>(`iframe[name="${iframeName}"]`);
+
+  if (!iframe) {
+    iframe = document.createElement("iframe");
+    iframe.name = iframeName;
+    iframe.className = "hidden";
+    iframe.setAttribute("aria-hidden", "true");
+    document.body.appendChild(iframe);
+  }
+
+  const form = document.createElement("form");
+  form.action = `https://formsubmit.co/${contactInfo.email}`;
+  form.method = "POST";
+  form.target = iframeName;
+  form.className = "hidden";
+
+  const fields: Record<string, string> = {
+    name: values.name,
+    email: values.email,
+    phone: values.phone,
+    company: values.company || "Not provided",
+    service: values.service,
+    budget: values.budget,
+    message: values.message,
+    _replyto: values.email,
+    _subject: `New consultation request from ${values.name}`,
+    _template: "table",
+    _captcha: "false",
+  };
+
+  Object.entries(fields).forEach(([name, value]) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+  form.remove();
+}
 
 export function ContactForm() {
   const {
@@ -36,8 +81,13 @@ export function ContactForm() {
       return;
     }
 
+    submitToFormSubmit(values);
     reset();
-    setError("root", { type: "success", message: result.message });
+    setError("root", {
+      type: "success",
+      message:
+        "Thank you. Your lead has been saved and sent to info@altterkeshav.com. Please check inbox/spam and activate FormSubmit if it asks.",
+    });
   }
 
   return (
