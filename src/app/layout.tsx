@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { ThemeLanguageProvider } from "@/components/layout/theme-language-provider";
 import { siteUrl } from "@/lib/utils";
 import "./globals.css";
 
@@ -25,6 +26,13 @@ export const metadata: Metadata = {
   },
   description:
     "Premium AI marketing consulting for automation, lead generation, customer journeys, and scalable growth systems.",
+  keywords: [
+    "AI marketing consultant",
+    "marketing automation Nepal",
+    "AI lead generation",
+    "Altter Keshav",
+    "AI consulting Kathmandu",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Altter Keshav | AI Marketing Expert & Consultant",
@@ -50,9 +58,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} bg-white text-[#111827] antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ThemeLanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ThemeLanguageProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Altter Keshav",
+              description: "AI marketing consulting, automation, lead generation, and growth systems.",
+              email: "info@altterkeshav.com",
+              telephone: "9851121734",
+              areaServed: "Nepal",
+              url: siteUrl,
+            }),
+          }}
+        />
       </body>
     </html>
   );

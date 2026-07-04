@@ -38,14 +38,39 @@ export function CaseStudyCard({ item }: { item: CaseStudy }) {
           </div>
         </div>
       </div>
-      <p className="text-sm font-semibold text-[#60B0BE]">{item.industry}</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="text-sm font-semibold text-[#60B0BE]">{item.industry}</p>
+        <span className="rounded-full bg-[#EAF8FA] px-3 py-1 text-xs font-semibold text-[#2F7F8C]">
+          {item.category}
+        </span>
+        <span className="rounded-full bg-[#F9FAFB] px-3 py-1 text-xs font-semibold text-[#6B7280]">
+          {item.duration}
+        </span>
+      </div>
       <h3 className="mt-3 font-heading text-xl font-bold text-[#111827]">{item.title}</h3>
       <p className="mt-3 text-sm font-semibold text-[#111827]">{item.result}</p>
       <p className="mt-3 text-sm leading-7 text-[#6B7280]">{item.description}</p>
+      <div className="mt-5 grid gap-3">
+        <div className="rounded-2xl bg-[#F9FAFB] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#60B0BE]">Challenge</p>
+          <p className="mt-2 text-sm leading-6 text-[#6B7280]">{item.challenge}</p>
+        </div>
+        <div className="rounded-2xl bg-[#F9FAFB] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#60B0BE]">Solution</p>
+          <p className="mt-2 text-sm leading-6 text-[#6B7280]">{item.solution}</p>
+        </div>
+      </div>
       <div className="mt-5 flex flex-wrap gap-2">
         {item.metrics.map((metric) => (
           <span key={metric} className="rounded-full bg-[#EAF8FA] px-3 py-1 text-xs font-semibold text-[#60B0BE]">
             {metric}
+          </span>
+        ))}
+      </div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {item.tools.map((tool) => (
+          <span key={tool} className="rounded-full border border-[#E5E7EB] bg-white px-3 py-1 text-xs font-semibold text-[#6B7280]">
+            {tool}
           </span>
         ))}
       </div>

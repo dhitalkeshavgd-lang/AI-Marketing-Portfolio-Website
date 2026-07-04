@@ -7,6 +7,10 @@ Premium AI marketing portfolio website built with Next.js 15, React, TypeScript,
 - Fully responsive light-theme portfolio
 - Home, About, Services, individual service pages, Blog, blog detail pages, Contact, Privacy, and Terms
 - Case studies with measurable outcomes
+- Filterable portfolio page with five detailed case studies
+- Downloadable resume section
+- Calendly booking section with lazy-loaded embed
+- Dark mode and English/Nepali navigation switch
 - Framer Motion animations and premium AI-inspired visuals
 - Contact form with React Hook Form and Zod validation
 - Next.js Server Action and `/api/contact` endpoint

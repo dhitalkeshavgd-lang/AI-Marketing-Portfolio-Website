@@ -3,7 +3,7 @@ import { blogPosts, services } from "@/data/site";
 import { siteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/about", "/services", "/blog", "/contact"];
+  const staticRoutes = ["", "/about", "/services", "/portfolio", "/blog", "/contact"];
   const serviceRoutes = services.map((service) => `/services/${service.slug}`);
   const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`);
 

@@ -12,9 +12,13 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
+
+export const calendlyUrl =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/altterkeshav/30min";
 
 export const services: Service[] = [
   {
@@ -165,40 +169,89 @@ export const services: Service[] = [
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "real-estate-ai-lead-generation",
     title: "AI Lead Generation for a Real Estate Company",
-    industry: "Real estate",
+    industry: "Real Estate",
+    category: "Lead Generation",
     result: "3.2x more qualified buyer inquiries in 60 days",
     description:
-      "Built an AI-assisted lead capture and qualification system that routed high-intent prospects to sales faster.",
-    metrics: ["42% lower response time", "31% lift in booked viewings", "18 hours saved weekly"],
+      "A Kathmandu property team needed fewer cold inquiries and more ready-to-visit buyers from website and social traffic.",
+    challenge:
+      "The sales team was receiving scattered inquiries from Facebook, Google forms, and website chat, but had no qualification process or response-time discipline.",
+    solution:
+      "Built an AI-assisted lead capture system with intent scoring, automated CRM routing, scripted follow-up messages, and a chatbot that qualified budget, location, and purchase timeline before handoff.",
+    duration: "8 weeks",
+    tools: ["Chatbot", "CRM Automation", "Lead Scoring", "Meta Ads", "Google Sheets"],
+    metrics: ["3.2x qualified inquiries", "42% lower response time", "31% lift in booked viewings", "18 hours saved weekly"],
     serviceSlug: "ai-lead-generation",
   },
   {
+    slug: "ecommerce-lifecycle-automation",
     title: "Marketing Automation for an E-commerce Brand",
     industry: "E-commerce",
+    category: "Automation",
     result: "27% revenue recovery from lifecycle email flows",
     description:
-      "Designed abandoned cart, post-purchase, and winback automations with segmented AI-assisted messaging.",
-    metrics: ["19% higher repeat purchases", "34% better email CTR", "8 automated flows launched"],
+      "A growing online store wanted to recover abandoned carts and convert one-time buyers into repeat customers.",
+    challenge:
+      "Campaigns were sent manually, every customer received the same message, and the team had no lifecycle automation for cart recovery, post-purchase education, or winback.",
+    solution:
+      "Designed segmented email and SMS flows, AI-assisted product recommendations, retention dashboards, and weekly optimization rituals for offer testing and customer cohorts.",
+    duration: "6 weeks",
+    tools: ["Email Automation", "Customer Segments", "AI Copy System", "Analytics Dashboard"],
+    metrics: ["27% recovered revenue", "19% higher repeat purchases", "34% better email CTR", "8 automated flows launched"],
     serviceSlug: "marketing-automation",
   },
   {
+    slug: "saas-content-automation-engine",
     title: "Content Automation for a B2B SaaS Team",
     industry: "SaaS",
+    category: "Content Automation",
     result: "4x faster content production without lowering quality",
     description:
-      "Created research, outline, repurposing, and review workflows for consistent thought leadership publishing.",
-    metrics: ["24 SEO briefs created", "65% lower drafting time", "12-week content calendar shipped"],
+      "A lean SaaS marketing team needed a consistent content engine without hiring a full editorial department.",
+    challenge:
+      "The team had strong expertise but inconsistent publishing, slow research, and no repeatable way to turn product knowledge into SEO articles, LinkedIn posts, and nurture content.",
+    solution:
+      "Created an AI-assisted editorial workflow for research, briefs, outlines, subject-matter interviews, repurposing, and quality checks with brand voice prompts and approval stages.",
+    duration: "5 weeks",
+    tools: ["SEO Briefs", "Prompt Library", "Content Calendar", "Notion Workflow", "Analytics"],
+    metrics: ["4x faster production", "24 SEO briefs created", "65% lower drafting time", "12-week content calendar shipped"],
     serviceSlug: "content-automation",
   },
   {
+    slug: "service-business-chatbot",
     title: "AI Chatbot for a Service Business",
     industry: "Professional services",
+    category: "Chatbot",
     result: "58% of website questions answered instantly",
     description:
-      "Deployed a website assistant trained on service information, pricing context, and consultation routing.",
-    metrics: ["21% more form submissions", "24/7 visitor support", "Clear human escalation path"],
+      "A consulting business needed to answer repetitive visitor questions and route high-intent prospects to booking faster.",
+    challenge:
+      "Visitors had common questions about pricing, services, and process, but the founder could not respond instantly during peak inquiry hours.",
+    solution:
+      "Deployed a website AI assistant trained on service pages, FAQs, booking rules, and escalation logic, then connected qualified conversations to the contact workflow.",
+    duration: "4 weeks",
+    tools: ["AI Chatbot", "Knowledge Base", "FAQ Design", "Contact Routing"],
+    metrics: ["58% instant answers", "21% more form submissions", "24/7 visitor support", "Clear human escalation path"],
     serviceSlug: "chatbot-development",
+  },
+  {
+    slug: "ai-seo-growth-system",
+    title: "AI SEO Growth System for a Local Education Brand",
+    industry: "Education",
+    category: "SEO + AI",
+    result: "146% organic traffic growth in 90 days",
+    description:
+      "A local education provider wanted to rank for high-intent course searches and convert organic visitors into consultation requests.",
+    challenge:
+      "The website had thin service pages, no keyword clusters, inconsistent internal linking, and slow content production.",
+    solution:
+      "Built an AI-assisted SEO system with topic clusters, search-intent briefs, technical cleanup priorities, internal-link maps, and conversion-focused landing page improvements.",
+    duration: "12 weeks",
+    tools: ["SEO Audit", "AI Briefs", "Landing Pages", "Search Console", "Conversion Tracking"],
+    metrics: ["146% organic growth", "38% more consultation clicks", "31 new ranking pages", "22% lower content cost"],
+    serviceSlug: "seo-ai-optimization",
   },
 ];
 
@@ -220,6 +273,18 @@ export const testimonials = [
       "We moved from manual follow-ups to a reliable lead engine. The implementation was fast and thoughtfully documented.",
     name: "Nisha Karki",
     role: "Director, GrowthWorks Nepal",
+  },
+  {
+    quote:
+      "The chatbot and follow-up system made our website feel alive. We stopped losing good prospects after office hours.",
+    name: "Suman Adhikari",
+    role: "Managing Partner, Advisory Studio",
+  },
+  {
+    quote:
+      "Altter's content automation process helped our experts publish consistently without sounding generic.",
+    name: "Maya Gurung",
+    role: "Head of Marketing, LearnSphere",
   },
 ];
 

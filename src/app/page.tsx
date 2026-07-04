@@ -4,6 +4,7 @@ import { AiVisual } from "@/components/sections/ai-visual";
 import { BlogCard, CaseStudyCard, ServiceCard } from "@/components/sections/cards";
 import { CTABanner } from "@/components/sections/cta";
 import { AnimatedBackground, Counter, FadeIn } from "@/components/sections/motion";
+import { ResumeSection } from "@/components/sections/resume-section";
 import { ButtonLink } from "@/components/ui/button";
 import { Container, Section, SectionTitle } from "@/components/ui/section";
 import { blogPosts, caseStudies, services, testimonials } from "@/data/site";
@@ -54,6 +55,9 @@ export default function Home() {
               <ButtonLink href="/services" size="lg" variant="secondary">
                 View Services
               </ButtonLink>
+              <ButtonLink href="/portfolio" size="lg" variant="secondary">
+                View Portfolio
+              </ButtonLink>
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -91,8 +95,8 @@ export default function Home() {
         <Container>
           <SectionTitle
             eyebrow="Proof"
-            title="Case studies with outcomes clients can understand"
-            description="Representative project stories that show how AI marketing systems translate into pipeline, time savings, and revenue impact."
+            title="Five detailed case studies with outcomes clients can understand"
+            description="Detailed project stories showing how AI marketing systems translate into pipeline, time savings, traffic growth, and revenue impact."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
             {caseStudies.map((item) => (
@@ -101,6 +105,8 @@ export default function Home() {
           </div>
         </Container>
       </Section>
+
+      <ResumeSection />
 
       <Section>
         <Container>

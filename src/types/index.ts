@@ -40,10 +40,16 @@ export type BlogPost = {
 };
 
 export type CaseStudy = {
+  slug: string;
   title: string;
   industry: string;
+  category: string;
   result: string;
   description: string;
+  challenge: string;
+  solution: string;
+  duration: string;
+  tools: string[];
   metrics: string[];
   serviceSlug: string;
 };

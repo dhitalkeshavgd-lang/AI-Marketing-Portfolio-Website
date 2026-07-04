@@ -27,6 +27,17 @@ body {
   background: #ffffff;
   color: #111827;
   font-family: var(--font-inter), Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
 }
 
 ::selection {
@@ -36,6 +47,61 @@ body {
 
 .font-heading {
   font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
+}
+
+html.dark body {
+  background: #071316;
+  color: #f8fafc;
+}
+
+html.dark header,
+html.dark footer,
+html.dark [class*="bg-white"],
+html.dark [class*="bg-[#F9FAFB]"] {
+  background-color: rgba(9, 24, 28, 0.92) !important;
+}
+
+html.dark [class*="bg-white/"],
+html.dark [class*="bg-[#F9FAFB]"] {
+  background-color: rgba(9, 24, 28, 0.72) !important;
+}
+
+html.dark [class*="text-[#111827]"] {
+  color: #f8fafc !important;
+}
+
+html.dark [class*="text-[#6B7280]"] {
+  color: #a8c3c8 !important;
+}
+
+html.dark [class*="border-[#E5E7EB]"] {
+  border-color: rgba(191, 231, 236, 0.18) !important;
+}
+
+html.dark [class*="shadow"] {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28) !important;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark button[role="combobox"] {
+  background-color: rgba(15, 38, 43, 0.92) !important;
+  color: #f8fafc !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #86a6ad;
+}
+
+html.dark section {
+  background-color: transparent;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    overflow-wrap: anywhere;
+  }
 }
 
 @keyframes accordion-down {

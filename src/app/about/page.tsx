@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Award } from "lucide-react";
 import { CTABanner } from "@/components/sections/cta";
 import { FadeIn } from "@/components/sections/motion";
+import { ResumeSection } from "@/components/sections/resume-section";
 import { Container, Section, SectionTitle } from "@/components/ui/section";
 
 export const metadata: Metadata = {
@@ -119,6 +120,8 @@ export default function AboutPage() {
           </div>
         </Container>
       </Section>
+
+      <ResumeSection />
 
       <CTABanner />
     </>
