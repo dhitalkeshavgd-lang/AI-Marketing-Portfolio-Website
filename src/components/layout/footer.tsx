@@ -71,6 +71,14 @@ export function Footer() {
       <Container className="flex flex-col gap-3 border-t border-[#E5E7EB] py-6 text-sm text-[#6B7280] sm:flex-row sm:items-center sm:justify-between">
         <p>Copyright {new Date().getFullYear()} Altter Keshav. All rights reserved.</p>
         <div className="flex gap-5">
+          <a
+            href="https://www.loksewatools.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#60B0BE]"
+          >
+            Loksewa Tools
+          </a>
           <Link href="/privacy-policy" className="hover:text-[#60B0BE]">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-[#60B0BE]">Terms</Link>
         </div>
